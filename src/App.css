@@ -16,8 +16,7 @@
   align-items: end;
   gap: 12px;
   padding: 18px 14px;
-  background: linear-gradient(180deg, rgba(9, 13, 18, 0.98) 85%, rgba(9, 13, 18, 0));
-  backdrop-filter: blur(4px);
+  background: #091119;
 }
 
 .eyebrow {
@@ -81,12 +80,18 @@ h3 {
   gap: 10px;
 }
 
+.stat-card {
+  background: #101b25;
+  box-shadow: none;
+}
+
 .stat-label {
   margin: 0;
-  color: var(--muted);
+  color: #c4d3df;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 0.76rem;
+  font-size: 0.82rem;
+  font-weight: 600;
 }
 
 .stat-value {
@@ -99,6 +104,8 @@ h3 {
 .quick-actions {
   display: grid;
   gap: 8px;
+  background: #101b25;
+  box-shadow: none;
 }
 
 button,
@@ -111,14 +118,19 @@ select {
 button {
   appearance: none;
   -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 44px;
   border-radius: 10px;
   border: 1px solid var(--btn-border);
-  background: var(--btn-bg);
+  background: #162635;
   background-image: none;
   color: var(--text-strong);
   font-weight: 600;
   padding: 10px 12px;
+  box-shadow: none;
+  text-shadow: none;
 }
 
 button:disabled {
@@ -141,12 +153,16 @@ select:focus-visible {
 .ghost-btn {
   min-height: 40px;
   padding: 8px 10px;
-  background: var(--btn-bg);
+  background: #101b25;
 }
 
 .stat-card .stat-label,
 .stat-card .muted {
-  background-color: var(--panel);
+  background-color: #101b25;
+}
+
+.stat-card .muted {
+  color: #c4d3df;
 }
 
 label {
@@ -331,24 +347,20 @@ textarea {
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
     transform: translateY(5px);
   }
 
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes riseIn {
   from {
-    opacity: 0;
     transform: translateY(10px);
   }
 
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
