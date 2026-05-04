@@ -109,10 +109,13 @@ select {
 }
 
 button {
+  appearance: none;
+  -webkit-appearance: none;
   min-height: 44px;
   border-radius: 10px;
   border: 1px solid var(--btn-border);
   background: var(--btn-bg);
+  background-image: none;
   color: var(--text-strong);
   font-weight: 600;
   padding: 10px 12px;
@@ -132,13 +135,18 @@ select:focus-visible {
 
 .primary-btn {
   border-color: rgba(130, 186, 118, 0.75);
-  background: linear-gradient(180deg, #6d9a64, #4d7f48);
+  background: linear-gradient(180deg, #3d6838, #2d4f2a);
 }
 
 .ghost-btn {
   min-height: 40px;
   padding: 8px 10px;
-  background: transparent;
+  background: var(--btn-bg);
+}
+
+.stat-card .stat-label,
+.stat-card .muted {
+  background-color: var(--panel);
 }
 
 label {

@@ -6,6 +6,12 @@
 - [x] No console errors or warnings in browser
 - [x] Mobile viewport responsive and functional
 - [x] All core flows tested (setup → checklist → submit → confirmation)
+- [x] Keyboard-only flow checked: Home → Setup → Checklist status buttons → Review reachable with Tab/Enter
+- [x] Automated accessibility audit run on production URL with axe-core (0 violations reported on 2026-05-04)
+- [x] Key WCAG AA contrast pairs verified numerically
+   - Ghost/quick-action buttons: 13.08:1
+   - Stat label/supporting text on cards: 7.68:1
+   - Primary CTA gradient: 6.03:1 to 8.62:1
 
 ## Deployment ✓
 - [x] Deployed to Vercel
