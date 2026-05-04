@@ -18,11 +18,12 @@
 - [x] .claude/PROJECT_CONTEXT.md included
 - [x] .claude/TASKS.md included
 
-## GitHub Repository
-- [ ] Repository initialized and pushed
-- [ ] Commit history is clean and meaningful
-- [ ] .gitignore includes node_modules/ and dist/
-- [ ] README visible and helpful on GitHub
+## GitHub Repository ✓
+- [x] Repository initialized and pushed
+- [x] Commit history is clean and meaningful (4 atomic commits)
+- [x] .gitignore includes node_modules/ and dist/
+- [x] README visible and helpful on GitHub
+- [x] Repository: https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist
 
 ## Feature Validation
 - [x] Home screen with stats and quick actions
@@ -69,8 +70,8 @@
 
 3. [ ] Prepare submission info
    - Live app URL: https://protogen-303-inspector-mobile-tool.vercel.app
-   - GitHub repo URL: [your-repo-url]
-   - Password (if protected): [your-password]
+   - GitHub repo URL: https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist
+   - Password (if protected): [enable in Vercel settings]
 
 4. [ ] Submit via Workday Microsoft Forms
    - Project: P303 - Mobile Experience
@@ -93,6 +94,7 @@
 
 ## Quick Links
 - Live: https://protogen-303-inspector-mobile-tool.vercel.app
+- GitHub: https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist
 - Vercel Settings: https://vercel.com/rizwan-janjuas-projects/protogen-303-inspector-mobile-tool/settings
 - BRIEF: [BRIEF.md](BRIEF.md)
 - README: [README.md](README.md)
