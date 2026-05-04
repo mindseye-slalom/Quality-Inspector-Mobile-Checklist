@@ -1,0 +1,39 @@
+:root {
+  --bg: #0b1118;
+  --bg-2: #0f1822;
+  --panel: #121f2a;
+  --panel-border: #2f465e;
+  --text: #d9e4ee;
+  --text-strong: #f3f7fb;
+  --muted: #9fb2c4;
+  --btn-bg: #1a2d3f;
+  --btn-border: #3b5874;
+  --focus: #f2c366;
+  --title-font: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --body-font: 'IBM Plex Sans', 'Trebuchet MS', sans-serif;
+  font-family: var(--body-font);
+  color: var(--text);
+  line-height: 1.45;
+  font-weight: 500;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 480px at -10% -20%, rgba(165, 116, 41, 0.26), transparent 50%),
+    radial-gradient(900px 340px at 110% 0%, rgba(98, 137, 176, 0.24), transparent 56%),
+    linear-gradient(175deg, var(--bg), var(--bg-2));
+}
+
+#root {
+  min-height: 100vh;
+}
