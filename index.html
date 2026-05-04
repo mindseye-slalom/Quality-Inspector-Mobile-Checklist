@@ -1,13 +1,264 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>protogen---303---inspector-mobile-tool</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protogen Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg-a: #f8f6f1;
+      --bg-b: #e9f2ff;
+      --ink: #101010;
+      --muted: #4f4f4f;
+      --accent: #00539f;
+      --highlight: #ffce42;
+      --card: rgba(255, 255, 255, 0.84);
+      --border: #d4dcea;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, #d7e8ff 0%, transparent 45%),
+        radial-gradient(circle at 100% 100%, #ffeacc 0%, transparent 40%),
+        linear-gradient(160deg, var(--bg-a) 0%, var(--bg-b) 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 2.4rem 1rem 2rem;
+    }
+
+    .wrapper {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      margin-bottom: 1.6rem;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 0.45rem;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 5.2vw, 3.4rem);
+      line-height: 1.05;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 64ch;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      backdrop-filter: blur(2px);
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 52, 110, 0.13);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+    }
+
+    .id {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .status {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: #0f5f27;
+      background: #d6f8e0;
+      border-radius: 999px;
+      padding: 0.2rem 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.08rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .desc {
+      color: var(--muted);
+      line-height: 1.4;
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+
+    .links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      border-bottom: 2px solid var(--highlight);
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="hero">
+      <p class="eyebrow">Protogen Portfolio</p>
+      <h1>All Protogen Projects in One Place</h1>
+      <p>Quick-launch page for your Protogen 100, 200, 301, 302, and 303 projects.</p>
+    </header>
+
+    <main class="grid">
+      <article class="card">
+        <div class="top">
+          <span class="id">Protogen 100</span>
+          <span class="status">Live</span>
+        </div>
+        <h2>Personal Website</h2>
+        <p class="desc">Portfolio and introductory personal web presence from the 100 track.</p>
+        <div class="actions">
+          <div class="links">
+            <a href="https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist/tree/main/personal-website"
+              target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://personal-website-rho-ivory-20.vercel.app/" target="_blank"
+              rel="noopener noreferrer">Vercel</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <span class="id">Protogen 200</span>
+          <span class="status">Live</span>
+        </div>
+        <h2>My Dashboard</h2>
+        <p class="desc">Interactive dashboard implementation from the intermediate Protogen 200 series.</p>
+        <div class="actions">
+          <div class="links">
+            <a href="https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist/tree/main/my-dashboard"
+              target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://my-dashboard-murex-six.vercel.app/" target="_blank" rel="noopener noreferrer">Vercel</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <span class="id">Protogen 301</span>
+          <span class="status">Live</span>
+        </div>
+        <h2>Operational Dashboard</h2>
+        <p class="desc">Operational dashboard prototype focused on RGM daily performance and store signals.</p>
+        <div class="actions">
+          <div class="links">
+            <a href="https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist/tree/main/Protogen%20-%20301%20-%20Operational%20Dashboard"
+              target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://301-operational-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer">Vercel</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <span class="id">Protogen 302</span>
+          <span class="status">Live</span>
+        </div>
+        <h2>Interactive Data Story</h2>
+        <p class="desc">Manufacturing quality data story with interactive visualizations revealing defect patterns and
+          ROI impact across operational dimensions.</p>
+        <div class="actions">
+          <div class="links">
+            <a href="https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist/tree/main/Protogen%20302%20-%20Interactive%20Data%20Story/"
+              target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://302-interactive-data-story.vercel.app/" target="_blank"
+              rel="noopener noreferrer">Vercel</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <span class="id">Protogen 303</span>
+          <span class="status">Live</span>
+        </div>
+        <h2>Inspector Mobile Tool</h2>
+        <p class="desc">Mobile-first quality inspection checklist app with categorized criteria, evidence capture,
+          progress tracking, and review workflows.</p>
+        <div class="actions">
+          <div class="links">
+            <a href="https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist" target="_blank"
+              rel="noopener noreferrer">GitHub</a>
+            <a href="https://protogen-303-inspector-mobile-tool.vercel.app" target="_blank"
+              rel="noopener noreferrer">Vercel</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+
 </html>
