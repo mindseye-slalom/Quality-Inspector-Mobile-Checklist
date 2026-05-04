@@ -24,6 +24,13 @@ const STATUS_META = {
   Flag: { className: 'flag', short: 'FLAG' },
 }
 
+const CATEGORY_ICONS = {
+  Visual: '/criteria/vis-01.svg',
+  Dimensional: '/criteria/dim-01.svg',
+  Assembly: '/criteria/asm-01.svg',
+  Electrical: '/criteria/ele-01.svg',
+}
+
 function createDraftInspection(lineId, unitId) {
   return {
     lineId,
@@ -63,6 +70,11 @@ function itemValidationError(item) {
   return ''
 }
 
+function isInspectionComplete(inspection) {
+  const completedCount = inspection.totals.pass + inspection.totals.fail + inspection.totals.flag
+  return completedCount >= CHECKLIST_ITEMS.length
+}
+
 function App() {
   const [view, setView] = useState('home')
   const [lineId, setLineId] = useState(LINE_OPTIONS[0])
@@ -71,6 +83,7 @@ function App() {
   const [activeItemId, setActiveItemId] = useState('')
   const [detailNote, setDetailNote] = useState('')
   const [detailPhotos, setDetailPhotos] = useState([])
+  const [recentFilter, setRecentFilter] = useState('all')
   const [recentInspections, setRecentInspections] = useState([
     {
       inspectionId: 'INSP-2419',
@@ -117,6 +130,8 @@ function App() {
     const completed = draft.items.filter((item) => item.status).length
     return { completed, total: draft.items.length }
   }, [draft])
+
+  const completionPercent = completion.total > 0 ? Math.round((completion.completed / completion.total) * 100) : 0
 
   const inspectionErrors = useMemo(() => {
     if (!draft) return []
@@ -252,6 +267,14 @@ function App() {
     [recentInspections],
   )
 
+  const filteredRecentInspections = useMemo(() => {
+    if (recentFilter === 'all') return recentInspections
+    if (recentFilter === 'complete') {
+      return recentInspections.filter((inspection) => isInspectionComplete(inspection))
+    }
+    return recentInspections.filter((inspection) => !isInspectionComplete(inspection))
+  }, [recentFilter, recentInspections])
+
   return (
     <main className="app-shell">
       <header className="top-bar fade-in">
@@ -339,18 +362,42 @@ function App() {
       {view === 'checklist' && draft && (
         <section className="stack fade-in">
           <article className="panel summary-strip">
-            <div>
-              <p className="muted">{draft.lineId}</p>
-              <strong>{draft.unitId}</strong>
+            <div className="summary-head">
+              <div>
+                <h1 className="muted">{draft.lineId}</h1>
+                <h1>{draft.unitId}</h1>
+              </div>
             </div>
-            <p>
-              {completion.completed}/{completion.total} complete
-            </p>
+            <div
+              className="completion-track"
+              role="progressbar"
+              aria-label="Inspection completion"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={completionPercent}
+            >
+              <span className="completion-fill" style={{ width: `${completionPercent}%` }} />
+            </div>
+            <div className="completion-block">
+              <p>
+                {completion.completed}/{completion.total} complete
+              </p>
+            </div>
           </article>
 
           {Object.entries(groupedItems).map(([category, items], index) => (
             <article className="panel stagger" style={{ '--stagger': index }} key={category}>
-              <h3>{category}</h3>
+              <div className="category-heading">
+                <img
+                  className="category-icon"
+                  src={CATEGORY_ICONS[category] ?? `/criteria/${items[0]?.id}.svg`}
+                  alt=""
+                  aria-hidden="true"
+                  width="42"
+                  height="42"
+                />
+                <h2>{category}</h2>
+              </div>
               <ul className="item-list">
                 {items.map((item) => {
                   const itemError = itemValidationError(item)
@@ -457,22 +504,59 @@ function App() {
         <section className="stack fade-in">
           <article className="panel">
             <h2>Recent Inspections</h2>
+            <div className="recent-filter-row" role="group" aria-label="Filter recent inspections">
+              <button
+                type="button"
+                className={`filter-btn ${recentFilter === 'all' ? 'active' : ''}`}
+                onClick={() => setRecentFilter('all')}
+              >
+                All
+              </button>
+              <button
+                type="button"
+                className={`filter-btn ${recentFilter === 'in-progress' ? 'active' : ''}`}
+                onClick={() => setRecentFilter('in-progress')}
+              >
+                In Progress
+              </button>
+              <button
+                type="button"
+                className={`filter-btn ${recentFilter === 'complete' ? 'active' : ''}`}
+                onClick={() => setRecentFilter('complete')}
+              >
+                Complete
+              </button>
+            </div>
             <ul className="history-list">
-              {recentInspections.map((inspection) => (
-                <li key={inspection.inspectionId}>
-                  <div>
-                    <strong>{inspection.inspectionId}</strong>
-                    <p className="muted">
-                      {inspection.lineId} | {inspection.unitId}
-                    </p>
-                  </div>
-                  <div className="totals-row">
-                    <span className="chip pass">{inspection.totals.pass}</span>
-                    <span className="chip fail">{inspection.totals.fail}</span>
-                    <span className="chip flag">{inspection.totals.flag}</span>
-                  </div>
-                </li>
-              ))}
+              {filteredRecentInspections.map((inspection) => {
+                const completedCount = inspection.totals.pass + inspection.totals.fail + inspection.totals.flag
+                const isComplete = isInspectionComplete(inspection)
+
+                return (
+                  <li
+                    key={inspection.inspectionId}
+                    className={isComplete ? 'inspection-complete' : 'inspection-incomplete'}
+                  >
+                    <div>
+                      <strong>{inspection.inspectionId}</strong>
+                      <span className={`inspection-state ${isComplete ? 'complete' : 'incomplete'}`}>
+                        {isComplete ? 'Complete' : 'In Progress'}
+                      </span>
+                      <p className="muted">
+                        {inspection.lineId} | {inspection.unitId}
+                      </p>
+                      <p className="muted">
+                        {completedCount}/{CHECKLIST_ITEMS.length} items complete
+                      </p>
+                    </div>
+                    <div className="totals-row">
+                      <span className="chip pass">{inspection.totals.pass}</span>
+                      <span className="chip fail">{inspection.totals.fail}</span>
+                      <span className="chip flag">{inspection.totals.flag}</span>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
           </article>
         </section>
@@ -487,9 +571,9 @@ function App() {
             ) : (
               <ul className="history-list">
                 {flaggedQueue.map((item) => (
-                  <li key={`${item.inspectionId}-${item.id}`}>
+                  <li className="flagged-item-card" key={`${item.inspectionId}-${item.id}`}>
                     <div>
-                      <span className={`chip ${STATUS_META[item.status].className}`}>{item.status}</span>
+                      <span className={`chip flagged-tag ${STATUS_META[item.status].className}`}>{item.status}</span>
                       <strong>{item.label}</strong>
                       <p className="muted">
                         {item.lineId} | Unit {item.unitId} | {item.inspectionId}
@@ -509,14 +593,26 @@ function App() {
           <article className="panel">
             <h2>Inspection Criteria</h2>
             <ul className="criteria-list">
-              {CHECKLIST_ITEMS.map((item) => (
-                <li key={item.id}>
-                  <strong>
-                    [{item.category}] {item.label}
-                  </strong>
-                  <p className="muted">{item.criteria}</p>
-                </li>
-              ))}
+              {CHECKLIST_ITEMS.map((item) => {
+                const criteriaImage = `/criteria/${item.id}.svg`
+                return (
+                  <li key={item.id}>
+                    <span className={`criteria-tag ${item.category.toLowerCase()}`}>{item.category}</span>
+                    <img
+                      className="criteria-image"
+                      src={criteriaImage}
+                      alt={`${item.label} criteria illustration`}
+                      loading="lazy"
+                      width="52"
+                      height="52"
+                    />
+                    <div className="criteria-copy">
+                      <strong>{item.label}</strong>
+                      <p className="muted">{item.criteria}</p>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
           </article>
         </section>

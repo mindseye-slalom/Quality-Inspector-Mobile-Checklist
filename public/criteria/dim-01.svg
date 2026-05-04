@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title>Housing width check</title>
+  <desc>Caliper measuring width</desc>
+  <rect x="4" y="4" width="88" height="88" rx="16" fill="#142331" stroke="#37546f" stroke-width="4"/>
+  <line x1="22" y1="28" x2="22" y2="68" stroke="#9fb2c4" stroke-width="4"/>\n  <line x1="74" y1="28" x2="74" y2="68" stroke="#9fb2c4" stroke-width="4"/>\n  <line x1="22" y1="34" x2="74" y2="34" stroke="#f2c366" stroke-width="4" marker-start="url(#a)" marker-end="url(#a)"/>\n  <rect x="30" y="48" width="36" height="16" rx="4" fill="#7da3c4"/>\n  <defs><marker id="a" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,3 L6,0 L6,6 Z" fill="#f2c366"/></marker></defs>
+</svg>

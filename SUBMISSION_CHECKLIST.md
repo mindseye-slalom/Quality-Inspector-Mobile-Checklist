@@ -64,12 +64,8 @@
 - [ ] Proof-read copy for typos
 
 ## Submission Steps
-1. [ ] Enable password protection in Vercel
-   - Go to https://vercel.com/rizwan-janjuas-projects/protogen-303-inspector-mobile-tool/settings
-   - Find "Password Protection" and enable
-   - Set password (share with reviewer if needed)
 
-2. [ ] Push code to GitHub
+2. [x] Push code to GitHub
    - Create repo if not already created
    - `git init` (if needed)
    - `git add .`

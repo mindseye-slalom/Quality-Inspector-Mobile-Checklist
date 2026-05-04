@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title>Label alignment</title>
+  <desc>Centered label with alignment guides</desc>
+  <rect x="4" y="4" width="88" height="88" rx="16" fill="#142331" stroke="#37546f" stroke-width="4"/>
+  <rect x="20" y="24" width="56" height="48" rx="6" fill="#20384d" stroke="#7da3c4" stroke-width="2"/>\n  <rect x="34" y="40" width="28" height="16" rx="3" fill="#f2c366"/>\n  <line x1="48" y1="20" x2="48" y2="76" stroke="#9ed59b" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>
