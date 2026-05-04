@@ -11,6 +11,8 @@
 - [x] Deployed to Vercel
 - [x] Production URL active: https://protogen-303-inspector-mobile-tool.vercel.app
 - [ ] Password protection enabled in Vercel settings
+  - **Password:** `Protogen!Rocks67@`
+  - **Instructions:** https://vercel.com/rizwan-janjuas-projects/protogen-303-inspector-mobile-tool/settings
 
 ## Documentation ✓
 - [x] BRIEF.md complete and matches built app
@@ -71,7 +73,7 @@
 3. [ ] Prepare submission info
    - Live app URL: https://protogen-303-inspector-mobile-tool.vercel.app
    - GitHub repo URL: https://github.com/mindseye-slalom/Quality-Inspector-Mobile-Checklist
-   - Password (if protected): [enable in Vercel settings]
+   - Password: `Protogen!Rocks67@`
 
 4. [ ] Submit via Workday Microsoft Forms
    - Project: P303 - Mobile Experience
