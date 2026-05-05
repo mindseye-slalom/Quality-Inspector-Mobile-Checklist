@@ -188,10 +188,10 @@ function App() {
         items: prev.items.map((item) =>
           item.id === activeItemId
             ? {
-                ...item,
-                note: detailNote,
-                photos: detailPhotos,
-              }
+              ...item,
+              note: detailNote,
+              photos: detailPhotos,
+            }
             : item,
         ),
       }
